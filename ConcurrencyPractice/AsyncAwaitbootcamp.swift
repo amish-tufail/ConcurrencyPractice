@@ -21,27 +21,27 @@ import Combine
 class AsyncAwaitbootcampViewModel: ObservableObject {
     @Published var array: [String] = []
     
-//    func fetchData() {
-//        let title1 = "Title 1: \(Thread.current)"
-//        self.array.append(title1)
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-//            let title2 = "Title 2: \(Thread.current)"
-//            self.array.append(title2)
-//        }
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
-//            DispatchQueue.global().async {
-//                let title3 = "Title 3: \(Thread.current)"
-//                self.array.append(title3)
-//                DispatchQueue.main.async {
-//                    let title4 = "Title 4: \(Thread.current)"
-//                    self.array.append(title4)
-//                }
-//            }
-//        }
-//    }
+    func fetchData() {
+        let title1 = "Title 1: \(Thread.current)"
+        self.array.append(title1)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            let title2 = "Title 2: \(Thread.current)"
+            self.array.append(title2)
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+            DispatchQueue.global().async {
+                let title3 = "Title 3: \(Thread.current)"
+                self.array.append(title3)
+                DispatchQueue.main.async {
+                    let title4 = "Title 4: \(Thread.current)"
+                    self.array.append(title4)
+                }
+            }
+        }
+    }
     
     // Now with async await, there is no gurantee that it will run on main thread or will retrn to main thread, so you have to be careful and return to main thread
-    func fetchData() async {
+    func fetchData2() async {
         // Now here it is on Main Thread
         let title1 = "Title 1: \(Thread.current)"
         self.array.append(title1)
@@ -72,8 +72,9 @@ struct AsyncAwaitbootcamp: View {
             Text(item)
         }
         .onAppear {
+//            viewModel.fetchData()
             Task {
-                await viewModel.fetchData()
+                await viewModel.fetchData2()
             }
         }
     }
