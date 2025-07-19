@@ -41,7 +41,7 @@ class DownloadWithAsyncViewModel: ObservableObject {
 //        self.image = UIImage(systemName: "heart.fill")
         
         do {
-            // We don' use dispatchqueu for main thread in async case that is only for combine and escaping
+            // We don' use DispatchQueue for main thread in async case that is only for combine and escaping
             // Here we use Actors
             let fetchedImage = try await manager.fetchImage()
             // This is just like Main Thread

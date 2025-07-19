@@ -13,7 +13,7 @@ import SwiftUI
 struct ConcurrencyPracticeApp: App {
     var body: some Scene {
         WindowGroup {
-            AsyncAwaitbootcamp()
+            TaskBootCampStartView()
         }
     }
 }

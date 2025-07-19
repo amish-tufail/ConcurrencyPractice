@@ -40,7 +40,7 @@ class AsyncAwaitbootcampViewModel: ObservableObject {
         }
     }
     
-    // Now with async await, there is no gurantee that it will run on main thread or will retrn to main thread, so you have to be careful and return to main thread
+    // Now with async await, there is no gurantee that it will run on main thread or will return to main thread, so you have to be careful and return to main thread
     func fetchData2() async {
         // Now here it is on Main Thread
         let title1 = "Title 1: \(Thread.current)"
